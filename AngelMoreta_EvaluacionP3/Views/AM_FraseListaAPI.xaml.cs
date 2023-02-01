@@ -1,9 +1,71 @@
+using AngelMoreta_EvaluacionP3.Models;
+using AngelMoreta_EvaluacionP3.Views;
+using Newtonsoft.Json;
+using System.Net;
+
+
 namespace AngelMoreta_EvaluacionP3.Views;
 
 public partial class AM_FraseListaAPI : ContentPage
 {
-	public AM_FraseListaAPI()
-	{
-		InitializeComponent();
-	}
+    List<AMFrase> frases;
+    public AM_FraseListaAPI()
+    {
+        InitializeComponent();
+
+        // List<Frase> frase = App.FraseRepo.GetAllFrases();
+        // AM_FraseList.ItemsSource = frase;
+        BindingContext = this;
+    }
+
+
+    public void OnItemAdded(object sender, EventArgs e)
+    {
+        // await Shell.Current.GoToAsync(nameof(BurgerItemPage));
+        Shell.Current.GoToAsync(nameof(AM_FraseItemPage), true, new Dictionary<string, object>
+        {
+            ["Item"] = new AMFrase()
+        });
+
+    }
+
+    public void OnItemSelected(object sender, SelectionChangedEventArgs e)
+    {
+        AMFrase selectedFrase = (AMFrase)AM_FraseList.SelectedItem;
+        if (selectedFrase != null)
+        {
+            Shell.Current.GoToAsync(nameof(AM_FraseItemPage), true, new Dictionary<string, object>
+            {
+                ["Item"] = selectedFrase
+            });
+
+        }
+        else
+        {
+            Console.WriteLine("error");
+        }
+    }
+
+    private async void OnBotonPoblarClicked(object sender, EventArgs e)
+    {
+        var request = new HttpRequestMessage();
+        request.RequestUri = new Uri("https://api.quotable.io/quotes?page=1");
+        request.Method = HttpMethod.Get;
+        request.Headers.Add("Accept", "application/json"); var client = new HttpClient();
+        HttpResponseMessage response = await client.SendAsync(request);
+
+        if (response.StatusCode == HttpStatusCode.OK)
+        {
+            String content = await response.Content.ReadAsStringAsync();
+            var resultado = JsonConvert.DeserializeObject<Root>(content);
+            frases = resultado.results;
+            // AM_Autor.Text = resultado.author;
+            //AM_Contenido.Text = resultado.content;
+            //Item._id = resultado._id;
+            //Item.authorSlug = resultado.authorSlug;
+            //Item.length = resultado.length;
+            //Item.dateAdded = resultado.dateAdded;
+            //Item.dateModified = resultado.dateModified;
+        }
+    }
 }

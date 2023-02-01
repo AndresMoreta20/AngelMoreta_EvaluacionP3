@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:models="clr-namespace:AngelMoreta_EvaluacionP3.Models"
              x:Class="AngelMoreta_EvaluacionP3.Views.AM_FraseListaAPI"
              Title="AM_FraseListaAPI">
-    <VerticalStackLayout>
-        <Label 
-            Text="LISTA API"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout
+        x:Name="AM_Layout">
+        <Grid RowDefinitions="*,Auto">
+            <CollectionView x:Name="AM_FraseList"
+                            SelectionMode="Single"
+                            SelectionChanged="OnItemSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate 
+                        x:Name="AM_Elementos"
+                        x:DataType="models:AMFrase">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                x:Name="AM_EtiquetaAutor"
+                                Text="{Binding author}" />
+                            <Label 
+                                x:Name="AM_EtiquetaContenido"
+                                Grid.Column="1" Text="{Binding content}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button 
+                x:Name="AM_BotonAnadir"
+                Grid.Row="1" Text="Añadir nuevo registro" Clicked="OnItemAdded" Margin="20"/>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
