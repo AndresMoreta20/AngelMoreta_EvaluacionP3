@@ -39,4 +39,18 @@ public partial class AM_FraseListaDB : ContentPage
             Console.WriteLine("error");
         }
     }
+
+    private void OnActualizarClicked(object sender, EventArgs e)
+    {
+        List<AMFrase> frase = App.AMFraseRepo.GetAllFrases();
+        AM_FraseList.ItemsSource = frase;
+
+    }
+
+    private void OnActualizarClic(object sender, EventArgs e)
+    {
+
+        List<AMFrase> frase = App.AMFraseRepo.GetAllFrases();
+        AM_FraseList.ItemsSource = frase;
+    }
 }

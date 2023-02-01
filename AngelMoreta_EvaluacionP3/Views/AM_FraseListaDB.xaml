@@ -6,7 +6,11 @@
              Title="AM_FraseListaDB">
     <VerticalStackLayout
         x:Name="AM_Layout">
+        <Button 
+                x:Name="AM_BotonActualizar"
+                Text="Actualizar lista" Clicked="OnActualizarClic" Margin="20"/>
         <Grid RowDefinitions="*,Auto">
+           
             <CollectionView x:Name="AM_FraseList"
                             SelectionMode="Single"
                             SelectionChanged="OnItemSelected">
@@ -29,9 +33,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            
             <Button 
                 x:Name="AM_BotonAnadir"
-                Grid.Row="1" Text="Añadir nuevo registro" Clicked="OnItemAdded" Margin="20"/>
+                Grid.Row="2" Text="Añadir nuevo registro" Clicked="OnItemAdded" Margin="20"/>
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

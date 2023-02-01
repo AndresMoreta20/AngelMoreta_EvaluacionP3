@@ -7,6 +7,7 @@
     <VerticalStackLayout
         x:Name="AM_Layout">
         <Grid RowDefinitions="*,Auto">
+          
             <CollectionView x:Name="AM_FraseList"
                             SelectionMode="Single"
                             SelectionChanged="OnItemSelected">

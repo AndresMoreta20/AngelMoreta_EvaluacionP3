@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AngelMoreta_EvaluacionP3.Models
 {
-    [Table("frase2")]
+    [Table("AMfrase.db3")]
     public class AMFrase
     {
         [PrimaryKey, AutoIncrement]
