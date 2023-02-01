@@ -5,7 +5,7 @@
              Title="AM_FraseItemPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="FRASE ITEM"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

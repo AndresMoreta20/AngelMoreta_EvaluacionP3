@@ -5,7 +5,7 @@
              Title="AM_FraseListaAPI">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="LISTA API"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
