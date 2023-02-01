@@ -1,4 +1,5 @@
-﻿namespace AngelMoreta_EvaluacionP3;
+﻿using AngelMoreta_EvaluacionP3.Data;
+namespace AngelMoreta_EvaluacionP3;
 
 public static class MauiProgram
 {
@@ -13,6 +14,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        string dbPath = AMFileAccessHelper.GetLocalFilePath("AMfrase.db3");
+        builder.Services.AddSingleton<AMFraseDatabase>(s => ActivatorUtilities.CreateInstance<AMFraseDatabase>(s, dbPath));
+
+        return builder.Build();
 	}
 }
