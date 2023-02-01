@@ -31,8 +31,8 @@ public partial class AM_FraseItemPage : ContentPage
     {
         Item.FechaActual = FechaActualV.Text;
         App.AMFraseRepo.AddNewFrase(Item);
-        await Shell.Current.GoToAsync(nameof(AM_FraseListaDB));
-
+        // await Shell.Current.GoToAsync(nameof(AM_FraseListaDB));
+        await Shell.Current.Navigation.PopAsync();
         /* Item.Name = nameB.Text;
          Item.Description = descB.Text;
          Item.WithExtraCheese = _flag;
@@ -44,13 +44,15 @@ public partial class AM_FraseItemPage : ContentPage
     private void OnCancelClicked(object sender, EventArgs e)
     {
         //Shell.Current.GoToAsync("..");
-        Shell.Current.GoToAsync(nameof(AM_FraseListaDB));
+       // Shell.Current.GoToAsync(nameof(AM_FraseListaDB));
+        Shell.Current.Navigation.PopAsync();
     }
 
     private void OnDeleteClicked(object sender, EventArgs e)
     {
         App.AMFraseRepo.DeleteFrase(Item);
-        Shell.Current.GoToAsync(nameof(AM_FraseListaDB));
+        //Shell.Current.GoToAsync(nameof(AM_FraseListaDB));
+        Shell.Current.Navigation.PopAsync();
     }
 
     public async void OnRandomClicked(object sender, EventArgs e)

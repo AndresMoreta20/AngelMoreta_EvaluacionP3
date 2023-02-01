@@ -13,11 +13,7 @@
         Padding="20"
         Spacing="10"
         VerticalOptions="StartAndExpand">
-            <Button
-                x:Name="AM_ObtenerRandom"
-                Text="Random"
-                Clicked="OnRandomClicked"
-                ></Button>
+          
             <Label 
                 x:Name="AM_EtiquetaAutor"
                 Text="Autor" />
