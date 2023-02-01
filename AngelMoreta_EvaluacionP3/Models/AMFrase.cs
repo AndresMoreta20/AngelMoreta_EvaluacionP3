@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace AngelMoreta_EvaluacionP3.Models
 {
     [Table("frase2")]
-    public class Frase
+    public class AMFrase
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -30,6 +30,6 @@ namespace AngelMoreta_EvaluacionP3.Models
         public int page { get; set; }
         public int totalPages { get; set; }
         public int lastItemIndex { get; set; }
-        public List<Frase> results { get; set; }
+        public List<AMFrase> results { get; set; }
     }
 }
