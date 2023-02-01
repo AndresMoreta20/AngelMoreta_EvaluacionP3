@@ -35,8 +35,7 @@ public partial class AM_FraseItemPage : ContentPage
         await Shell.Current.Navigation.PopAsync();
         /* Item.Name = nameB.Text;
          Item.Description = descB.Text;
-         Item.WithExtraCheese = _flag;
-         App.BurgerRepo.AddNewBurger(Item);*/
+      ;*/
         //Shell.Current.GoToAsync("..");
 
     }

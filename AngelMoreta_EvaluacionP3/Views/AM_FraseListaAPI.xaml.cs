@@ -23,7 +23,7 @@ public partial class AM_FraseListaAPI : ContentPage
 
     public void OnItemAdded(object sender, EventArgs e)
     {
-        // await Shell.Current.GoToAsync(nameof(BurgerItemPage));
+       
         Shell.Current.GoToAsync(nameof(AM_FraseItemPage), true, new Dictionary<string, object>
         {
             ["Item"] = new AMFrase()
