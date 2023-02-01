@@ -1,12 +1,64 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AngelMoreta_EvaluacionP3"
+             xmlns:models="clr-namespace:AngelMoreta_EvaluacionP3.Models"
+             xmlns:viewModels="clr-namespace:AngelMoreta_EvaluacionP3.ViewModels"
              x:Class="AngelMoreta_EvaluacionP3.Views.AM_FraseItemPage"
              Title="AM_FraseItemPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="FRASE ITEM"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView 
+        x:Name="ItemVista">
+        <VerticalStackLayout 
+        x:Name="AM_Layout"
+        Padding="20"
+        Spacing="10"
+        VerticalOptions="StartAndExpand">
+            <Button
+                x:Name="AM_ObtenerRandom"
+                Text="Random"
+                Clicked="OnRandomClicked"
+                ></Button>
+            <Label 
+                x:Name="AM_EtiquetaAutor"
+                Text="Autor" />
+
+            <Entry 
+                x:Name="AM_Autor" Text="{Binding author}" />
+
+            <Label 
+                x:Name="AM_EtiquetaContenido"
+                Text="Contenido" />
+
+            <Entry 
+                x:Name="AM_Contenido" Text="{Binding content}" />
+            <Label
+                Text="Fecha de creación: "></Label>
+            <Label
+                x:Name="AM_FechaCreacion"
+                Text="{Binding FechaActual}"
+                ></Label>
+
+            <Label x:Name="FechaActualV"
+                       Text="{Binding DateTime, StringFormat='{0:dd/MM/yyyy HH:mm:ss}'}">
+                <Label.BindingContext>
+                    <viewModels:AMDateViewModel/>
+                </Label.BindingContext>
+
+            </Label>
+
+            <Button 
+                x:Name="AM_BotonGuardar"
+                Text="Guardar"
+                Clicked="OnSaveClicked" />
+            <Button 
+                x:Name="AM_BorrarBoton"
+                Text="Borrar"
+                Clicked="OnDeleteClicked" 
+                   />
+            <Button 
+                x:Name="AM_BotonCancelar"
+                Text="Cancelar"
+                Clicked="OnCancelClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
